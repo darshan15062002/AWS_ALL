@@ -1,0 +1,17 @@
+org: darshan1506
+app: mamda2
+service: mamda2
+frameworkVersion: "3"
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  region: ap-south-1
+
+functions:
+  api:
+    handler: index.hello
+    events:
+      - httpApi:
+          path: /
+          method: get
