@@ -1,4 +1,4 @@
-const { S3Client, GetObjectCommand } = require("@aws-sdk/client-s3")
+const { S3Client, GetObjectCommand, PutObjectCommand } = require("@aws-sdk/client-s3")
 const { getSignedUrl } = require("@aws-sdk/s3-request-presigner")
 const dotenv = require('dotenv');
 
@@ -25,8 +25,23 @@ async function getObjectURL(key) {
     return url
 }
 
+async function PutObjectURL(filename, contentType) {
+
+    const cammand = new PutObjectCommand({
+        Bucket: 'awsbucket-test-124',
+        Key: `users/image${filename}`,
+        ContentType: contentType
+    })
+
+    const url = await getSignedUrl(s3client, cammand)
+
+    return url
+}
+
+
 async function init() {
-    console.log(await getObjectURL("view-3d-male-teacher (1).jpg"))
+    console.log(await getObjectURL("users/imageimage-1707418415882.jpeg"))
+    // console.log(await PutObjectURL(`image-${Date.now()}.jpeg`, "image/png"))
 }
 
 init()
