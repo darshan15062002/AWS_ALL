@@ -40,7 +40,7 @@ async function PutObjectURL(filename, contentType) {
 
 
 async function init() {
-    console.log(await getObjectURL("users/imageimage-1707418415882.jpeg"))
+    console.log(await getObjectURL("users/image/image-1707418415882.jpeg"))
     // console.log(await PutObjectURL(`image-${Date.now()}.jpeg`, "image/png"))
 }
 
